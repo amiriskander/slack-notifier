@@ -74,11 +74,11 @@ class Message
     }
 
     /**
-     * @param $webhookUrl
+     * @param string $webhookUrl
      *
      * @return array
      */
-    public function send($webhookUrl)
+    public function send(string $webhookUrl)
     {
         $body = json_encode($this->getSnakeCaseArray(), JSON_UNESCAPED_SLASHES);
 

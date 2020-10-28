@@ -15,46 +15,49 @@ composer require amiriskander/slack-notifier
 
 ### Usage
 ```
+use AmirIskander\SlackNotifier;
+
 public function TestSendSlackMessage()
 {
-    $message = new SlackMessage();
-    $block   = new SlackMessageBlock('section');
-    $block->setText(new SlackMessageBlockText('mrkdwn', 'John Doe submitted a feedback!'));
+    $message = new Message();
+    $block   = new Block('section');
+    $block->setText(new Text('mrkdwn', 'John Doe submitted a feedback!'));
     $message->addBlock($block);
 
-    $block   = new SlackMessageBlock('divider');
+    $block   = new Block('divider');
     $message->addBlock($block);
 
-    $block   = new SlackMessageBlock('section');
-    $block->setText(new SlackMessageBlockText('mrkdwn', ':new: *You guys are awesome. Keep up the good work!*'));
+    $block   = new Block('section');
+    $block->setText(new Text('mrkdwn', ':new: *You guys are awesome. Keep up the good work!*'));
     $message->addBlock($block);
 
-    $block   = new SlackMessageBlock('section');
-    $block->setText(new SlackMessageBlockText('mrkdwn', '*Source* :information_source: Homepage Feedback Form'));
+    $block   = new Block('section');
+    $block->setText(new Text('mrkdwn', '*Source* :information_source: Homepage Feedback Form'));
     $message->addBlock($block);
 
-    $block   = new SlackMessageBlock('section');
-    $block->setText(new SlackMessageBlockText('mrkdwn', '*In the last 30 days*'));
-    $block->addField(new SlackMessageBlockText('mrkdwn', 'Submitted 6 form submissions'));
-    $block->addField(new SlackMessageBlockText('mrkdwn', 'Rated 12 products'));
-    $accessory = new SlackMessageBlockAccessory('image');
+    $block   = new Block('section');
+    $block->setText(new Text('mrkdwn', '*In the last 30 days*'));
+    $block->addField(new Text('mrkdwn', 'Submitted 6 form submissions'));
+    $block->addField(new Text('mrkdwn', 'Rated 12 products'));
+    $accessory = new Accessory('image');
     $accessory->setImageUrl('https://i.ibb.co/19W2sdD/stat.png');
     $accessory->setAltText('Stats');
     $block->setAccessory($accessory);
     $message->addBlock($block);
 
-    $block   = new SlackMessageBlock('divider');
+    $block   = new Block('divider');
     $message->addBlock($block);
 
-    $block   = new SlackMessageBlock('section');
-    $block->setText(new SlackMessageBlockText('mrkdwn', 'More information about this user'));
-    $accessory = new SlackMessageBlockAccessory('button');
+    $block   = new Block('section');
+    $block->setText(new Text('mrkdwn', 'More information about this user'));
+    $accessory = new Accessory('button');
     $accessory->setUrl('https://yourwebsite/user/123/profile/');
-    $accessory->setText(new SlackMessageBlockText('plain_text', ':bust_in_silhouette: View User'));
+    $accessory->setText(new Text('plain_text', ':bust_in_silhouette: View User'));
     $accessory->setValue('view_user_btn');
     $block->setAccessory($accessory);
     $message->addBlock($block);
 
+    // Replace parameter below with webhook of channel you would like to post to
     $message->send('https://hooks.slack.com/services/....');
 }
 ```

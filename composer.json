@@ -1,0 +1,13 @@
+{
+    "name": "amiriskander/slack-notifier",
+    "description": "A simple package that can be used to build and send Slack messages",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Amir Iskander",
+            "email": "amir.amgad.iskander@gmail.com"
+        }
+    ],
+    "require": {}
+}

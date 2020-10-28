@@ -2,7 +2,7 @@
 
 namespace AmirIskander\SlackNotifier;
 
-class SlackMessage
+class Message
 {
     use Common;
 
@@ -35,20 +35,20 @@ class SlackMessage
     /**
      * @param array $blocks
      *
-     * @return SlackMessage
+     * @return Message
      */
-    public function setBlocks(array $blocks): SlackMessage
+    public function setBlocks(array $blocks): Message
     {
         $this->blocks = $blocks;
         return $this;
     }
 
     /**
-     * @param SlackMessageBlock $block
+     * @param Block $block
      *
      * @return $this
      */
-    public function addBlock(SlackMessageBlock $block)
+    public function addBlock(Block $block)
     {
         $this->blocks[] = $block;
         return $this;
@@ -65,9 +65,9 @@ class SlackMessage
     /**
      * @param string $webhookUrl
      *
-     * @return SlackMessage
+     * @return Message
      */
-    public function setWebhookUrl(string $webhookUrl): SlackMessage
+    public function setWebhookUrl(string $webhookUrl): Message
     {
         $this->webhookUrl = $webhookUrl;
         return $this;

@@ -5,7 +5,7 @@ namespace AmirIskander\SlackNotifier;
 /**
  * Class SlackMessageBlock
  */
-class SlackMessageBlock
+class Block
 {
     public const ALLOWED_TYPES = ['section', 'divider'];
 
@@ -17,17 +17,17 @@ class SlackMessageBlock
     private $type;
 
     /**
-     * @var SlackMessageBlockText
+     * @var Text
      */
     private $text;
 
     /**
-     * @var SlackMessageBlockText[]
+     * @var Text[]
      */
     private $fields;
 
     /**
-     * @var SlackMessageBlockAccessory
+     * @var Accessory
      */
     private $accessory;
 
@@ -55,7 +55,7 @@ class SlackMessageBlock
      * @return $this
      * @throws Exception
      */
-    public function setType(string $type): SlackMessageBlock
+    public function setType(string $type): Block
     {
         if (!in_array($type, self::ALLOWED_TYPES)) {
             throw new Exception("Block type is now allowed. Only allowed types are " . implode(', ', self::ALLOWED_TYPES));
@@ -65,26 +65,26 @@ class SlackMessageBlock
     }
 
     /**
-     * @return SlackMessageBlockText
+     * @return Text
      */
-    public function getText(): SlackMessageBlockText
+    public function getText(): Text
     {
         return $this->text;
     }
 
     /**
-     * @param SlackMessageBlockText $text
+     * @param Text $text
      *
-     * @return SlackMessageBlock
+     * @return Block
      */
-    public function setText(SlackMessageBlockText $text): SlackMessageBlock
+    public function setText(Text $text): Block
     {
         $this->text = $text;
         return $this;
     }
 
     /**
-     * @return SlackMessageBlockText[]
+     * @return Text[]
      */
     public function getFields(): array
     {
@@ -92,41 +92,41 @@ class SlackMessageBlock
     }
 
     /**
-     * @param SlackMessageBlockText[] $fields
+     * @param Text[] $fields
      *
-     * @return SlackMessageBlock
+     * @return Block
      */
-    public function setFields(array $fields): SlackMessageBlock
+    public function setFields(array $fields): Block
     {
         $this->fields = $fields;
         return $this;
     }
 
     /**
-     * @param SlackMessageBlockText $field
+     * @param Text $field
      *
      * @return $this
      */
-    public function addField(SlackMessageBlockText $field): SlackMessageBlock
+    public function addField(Text $field): Block
     {
         $this->fields[] = $field;
         return $this;
     }
 
     /**
-     * @return SlackMessageBlockAccessory
+     * @return Accessory
      */
-    public function getAccessory(): SlackMessageBlockAccessory
+    public function getAccessory(): Accessory
     {
         return $this->accessory;
     }
 
     /**
-     * @param SlackMessageBlockAccessory $accessory
+     * @param Accessory $accessory
      *
-     * @return SlackMessageBlock
+     * @return Block
      */
-    public function setAccessory(SlackMessageBlockAccessory $accessory): SlackMessageBlock
+    public function setAccessory(Accessory $accessory): Block
     {
         $this->accessory = $accessory;
         return $this;

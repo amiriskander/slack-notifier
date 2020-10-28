@@ -5,7 +5,7 @@ namespace AmirIskander\SlackNotifier;
 /**
  * Class SlackMessageBlockText
  */
-class SlackMessageBlockText
+class Text
 {
     public const ALLOWED_TYPES = ['plain_text', 'mrkdwn'];
 
@@ -54,7 +54,7 @@ class SlackMessageBlockText
      * @return $this
      * @throws Exception
      */
-    public function setType(string $type): SlackMessageBlockText
+    public function setType(string $type): Text
     {
         if (!in_array($type, self::ALLOWED_TYPES)) {
             throw new Exception("Text type is now allowed. Only allowed types are " . implode(', ', self::ALLOWED_TYPES));
@@ -74,9 +74,9 @@ class SlackMessageBlockText
     /**
      * @param string $text
      *
-     * @return SlackMessageBlockText
+     * @return Text
      */
-    public function setText(string $text): SlackMessageBlockText
+    public function setText(string $text): Text
     {
         $this->text = $text;
         return $this;
@@ -93,9 +93,9 @@ class SlackMessageBlockText
     /**
      * @param bool $emoji
      *
-     * @return SlackMessageBlockText
+     * @return Text
      */
-    public function setHasEmoji(bool $emoji): SlackMessageBlockText
+    public function setHasEmoji(bool $emoji): Text
     {
         $this->emoji = $emoji;
         return $this;

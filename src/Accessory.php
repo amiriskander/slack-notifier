@@ -5,7 +5,7 @@ namespace AmirIskander\SlackNotifier;
 /**
  * Class SlackMessageBlockAccessory
  */
-class SlackMessageBlockAccessory
+class Accessory
 {
     public const ALLOWED_TYPES = ['image', 'button'];
 
@@ -17,7 +17,7 @@ class SlackMessageBlockAccessory
     private $type;
 
     /**
-     * @var SlackMessageBlockText
+     * @var Text
      */
     private $text;
 
@@ -72,7 +72,7 @@ class SlackMessageBlockAccessory
      * @return $this
      * @throws Exception
      */
-    public function setType(string $type): SlackMessageBlockAccessory
+    public function setType(string $type): Accessory
     {
         if (!in_array($type, self::ALLOWED_TYPES)) {
             throw new Exception("Text type is now allowed. Only allowed types are " . implode(', ', self::ALLOWED_TYPES));
@@ -85,19 +85,19 @@ class SlackMessageBlockAccessory
     }
 
     /**
-     * @return SlackMessageBlockText
+     * @return Text
      */
-    public function getText(): SlackMessageBlockText
+    public function getText(): Text
     {
         return $this->text;
     }
 
     /**
-     * @param SlackMessageBlockText $text
+     * @param Text $text
      *
-     * @return SlackMessageBlockAccessory
+     * @return Accessory
      */
-    public function setText(SlackMessageBlockText $text): SlackMessageBlockAccessory
+    public function setText(Text $text): Accessory
     {
         $this->text = $text;
         return $this;
@@ -116,7 +116,7 @@ class SlackMessageBlockAccessory
      *
      * @return $this
      */
-    public function setAltText(string $altText): SlackMessageBlockAccessory
+    public function setAltText(string $altText): Accessory
     {
         $this->altText = $altText;
         return $this;
@@ -135,7 +135,7 @@ class SlackMessageBlockAccessory
      *
      * @return $this
      */
-    public function setImageUrl(string $imageUrl): SlackMessageBlockAccessory
+    public function setImageUrl(string $imageUrl): Accessory
     {
         $this->imageUrl = $imageUrl;
         return $this;
@@ -152,9 +152,9 @@ class SlackMessageBlockAccessory
     /**
      * @param mixed $value
      *
-     * @return SlackMessageBlockAccessory
+     * @return Accessory
      */
-    public function setValue($value): SlackMessageBlockAccessory
+    public function setValue($value): Accessory
     {
         $this->value = $value;
         return $this;
@@ -171,9 +171,9 @@ class SlackMessageBlockAccessory
     /**
      * @param mixed $url
      *
-     * @return SlackMessageBlockAccessory
+     * @return Accessory
      */
-    public function setUrl($url): SlackMessageBlockAccessory
+    public function setUrl($url): Accessory
     {
         $this->url = $url;
         return $this;
@@ -190,9 +190,9 @@ class SlackMessageBlockAccessory
     /**
      * @param mixed $actionId
      *
-     * @return SlackMessageBlockAccessory
+     * @return Accessory
      */
-    public function setActionId($actionId): SlackMessageBlockAccessory
+    public function setActionId($actionId): Accessory
     {
         $this->actionId = $actionId;
         return $this;

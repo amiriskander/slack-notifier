@@ -1,6 +1,7 @@
 {
     "name": "amiriskander/slack-notifier",
     "description": "A simple package that can be used to build and send Slack messages",
+    "keywords": ["slack", "notifier", "notification", "message", "integration", "laravel", "symfony"],
     "type": "library",
     "license": "MIT",
     "authors": [

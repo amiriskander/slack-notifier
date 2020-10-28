@@ -9,5 +9,14 @@
             "email": "amir.amgad.iskander@gmail.com"
         }
     ],
-    "require": {}
+    "require": {
+        "php": ">=7.1",
+        "ext-curl": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "AmirIskander\\SlackNotifier\\": "src/"
+        },
+        "files": [ "./resources/constants.php" ]
+    }
 }

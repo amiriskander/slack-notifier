@@ -84,14 +84,13 @@ class Message
 
         // Create CURL HTTP POST request
         $ch = curl_init($webhookUrl);
-
         curl_setopt($ch, CURLOPT_POST, 1);
         curl_setopt($ch, CURLOPT_POSTFIELDS, $body);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
         curl_setopt($ch, CURLOPT_MAXREDIRS, 3);
         curl_setopt($ch, CURLOPT_HTTPHEADER, [
-            'Accept:  application/json',
+            'Accept: application/json',
             'Content-Type: application/json',
             'Content-Length: ' . strlen($body)
         ]);

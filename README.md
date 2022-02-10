@@ -23,8 +23,10 @@ use AmirIskander\SlackNotifier;
 
 public function TestHelloWorld()
 {
-    $message = new Message();
-    $message->
+    $message = new Message()
+        ->addBlock(new Section()->setText(new PlainText('Hello, World!')));
+        ->send('https://hooks.slack.com/services/....')
+    ;
 }
 ``` 
 

@@ -7,6 +7,7 @@ A simple PHP package that can be used to build and send Slack messages
 
 - PHP >= 7.1
 - PHP cURL Extension
+- PHP JSON Extension
 
 ### Installation
 ```
@@ -14,6 +15,33 @@ composer require amiriskander/slack-notifier
 ```
 
 ### Usage
+
+There is no massive effort you need to create a simple text message like `Hello, World!`
+
+```
+use AmirIskander\SlackNotifier;
+
+public function TestHelloWorld()
+{
+    $message = new Message()
+        ->addBlock(new Section()->setText(new PlainText('Hello, World!')));
+        ->send('https://hooks.slack.com/services/....')
+    ;
+}
+``` 
+
+The package supports block types:
+- Divider: A horizontal gray divider.
+- Section: A container that can contain multiple components.
+
+And a block of type section can have components of types:
+- Text: Can be either `Plain Text` or `Markdown`
+- Accessory: Can be either `Button` or `Image`
+
+
+For more complex examples that needs adding blocks with images, links and buttons, it is not a big problem. 
+Check the below example: 
+
 ```
 use AmirIskander\SlackNotifier;
 
@@ -55,6 +83,54 @@ public function TestSendSlackMessage()
     $accessory->setText(new Text('plain_text', ':bust_in_silhouette: View User'));
     $accessory->setValue('view_user_btn');
     $block->setAccessory($accessory);
+    $message->addBlock($block);
+
+    // Replace parameter below with webhook of channel you would like to post to
+    $message->send('https://hooks.slack.com/services/....');
+}
+```
+
+The same example using classes for Button, Image, Section, Divider
+```
+use AmirIskander\SlackNotifier;
+
+public function TestSendSlackMessage()
+{
+    // Init Message object
+    $message = new Message();
+    
+    // Adding a section
+    $block   = new Section();
+    $block->setText(new MarkdownText('John Doe submitted a feedback!'));
+    $message->addBlock($block);
+    
+    // Adding a divider
+    $message->addBlock(new Divider());
+
+    $block   = new Section();
+    $block->setText(new MarkdownText(':new: *You guys are awesome. Keep up the good work!*'));
+    $message->addBlock($block);
+
+    $block   = new Section();
+    $block->setText(new MarkdownText('*Source* :information_source: Homepage Feedback Form'));
+    $message->addBlock($block);
+
+    $block   = new Section();
+    $block->setText(new MarkdownText('*In the last 30 days*'));
+    $block->addField(new MarkdownText('Submitted 6 form submissions'));
+    $block->addField(new MarkdownText('Rated 12 products'));
+    $accessory = new Image('https://i.ibb.co/19W2sdD/stat.png', 'Stats');
+    $block->setAccessory($accessory);
+    $message->addBlock($block);
+
+    $message->addBlock(new Divider());
+
+    $block   = new Section();
+    $block->setText(new MarkdownText('More information about this user'));
+    $block->setAccessory(new Button(
+        'https://yourwebsite/user/123/profile/', 
+        ':bust_in_silhouette: View User'  
+    ));
     $message->addBlock($block);
 
     // Replace parameter below with webhook of channel you would like to post to

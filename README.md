@@ -34,11 +34,9 @@ The package supports block types:
 - Divider: A horizontal gray divider.
 - Section: A container that can contain multiple components.
 
-A block of type section can have components of types:
+And a block of type section can have components of types:
 - Text: Can be either `Plain Text` or `Markdown`
-- Accessory
-
-
+- Accessory: Can be either `Button` or `Image`
 
 
 For more complex examples that needs adding blocks with images, links and buttons, it is not a big problem. 
